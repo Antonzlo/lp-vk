@@ -554,7 +554,7 @@ raw.map(async x => {
 					return resolve(attachment);	
 				})
 						
-				})
+				}).catch(reject);
 		
 		})
 	};
