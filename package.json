@@ -1,0 +1,27 @@
+{
+  "name": "lp-vk",
+  "version": "0.5.20",
+  "description": "Simple vkontakte API longpoll/callback library",
+  "main": "lp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vk",
+    "longpoll",
+    "lp",
+    "callback",
+    "vkontakte",
+    "���������",
+    "��"
+  ],
+  "author": "Antonzlo",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^3.2.0",
+    "form-data": "^4.0.0",
+    "nano-time": "^1.0.0",
+    "node-fetch": "latest",
+    "req-fast": "latest"
+  }
+}
