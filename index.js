@@ -527,6 +527,7 @@ if(upd.type == 'message_new' || upd.type == 'message_edit' || upd.type == 'messa
 		raw = !Array.isArray(raw) ? [raw] : raw;
 		if(raw.length > 10) throw new RangeError('only 10 photos per message allowed')
 		let a = await this.api.call("photos.getMessagesUploadServer");
+			console.log(a)
 		let form = new FormData();
 		let i = 0;
 		let temp = raw.splice(0,5);
@@ -536,6 +537,7 @@ if(upd.type == 'message_new' || upd.type == 'message_edit' || upd.type == 'messa
 			form.append("file"+i, x, { filename : 'upload'+(i)+'.png' });
 		});
 		await fetch(a.upload_url, { method: 'POST', body: form }).then(res => res.json()).then(async ans => {
+			console.log(ans)
 					ans = (await this.api.call("photos.saveMessagesPhoto",ans))
 					console.log(ans)
 					ans = ans.map(x=>'photo'+x.owner_id+'_'+x.id).join(',');
