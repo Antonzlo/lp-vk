@@ -538,7 +538,7 @@ if(upd.type == 'message_new' || upd.type == 'message_edit' || upd.type == 'messa
 		});
 		await fetch(a.upload_url, { method: 'POST', body: form }).then(res => res.json()).then(async ans => {
 			console.log(ans)
-					ans = (await this.api.call("photos.saveMessagesPhoto",ans).catch(reject).then(c=>C))
+					ans = (await this.api.call("photos.saveMessagesPhoto",ans).catch(reject).then(c=>c))
 					console.log(ans)
 					ans = ans.map(x=>'photo'+x.owner_id+'_'+x.id).join(',');
 					attachment += ans;
