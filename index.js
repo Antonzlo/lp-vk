@@ -207,7 +207,8 @@ work()
 async startUser(token, user_id) {
 	if(!this.api.options.started) return this.errored ? (this.start()) : false;
 	req({ url: `${/https:\/\//i.test(this.a.server) ? this.a.server : 'https://'+this.a.server}?act=a_check&key=${this.a.key}&ts=${this.a.ts}&wait=5&mode=138`, disableGzip: false, timeout: 8000}, async (err, resp) => {
-		if(err) { 
+		if(err) {
+			console.error(err); 
 			return this.startUser(token, user_id)
 			//throw err;
 		}
