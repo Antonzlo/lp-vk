@@ -206,13 +206,9 @@ work()
 }
 async startUser(token, user_id) {
 	if(!this.api.options.started) return this.errored ? (this.start()) : false;
-	req({ url: `${/https:\/\//i.test(this.a.server) ? this.a.server : 'https://'+this.a.server}?act=a_check&key=${this.a.key}&ts=${this.a.ts}&wait=5&mode=138`, disableGzip: false, timeout: 8000}, async (err, resp) => {
-		if(err) {
-			console.error(err); 
-			return this.startUser(token, user_id)
-			//throw err;
-		}
-		let updates = resp.body;
+	fetch(`${/https:\/\//i.test(this.a.server) ? this.a.server : 'https://'+this.a.server}?act=a_check&key=${this.a.key}&ts=${this.a.ts}&wait=5&mode=138`, {disableGzip: false, timeout: 8000}).then(e=>e.json()).then( async ( resp) => {
+		
+		let updates = resp;
 		if(updates.failed) {
 			if(updates.failed == 1) {
 				this.a.ts = updates.ts;
@@ -343,7 +339,13 @@ raw.map(async x => {
 	this.spisok[upd.type]({...upd.object, start: nano()});//*/
 }
 this.startUser(token, user_id);
-});
+}).catch(err=>{
+
+			console.error(err); 
+			return this.startUser(token, user_id)
+			//throw err;
+		
+	});
 
 }
 async startGroupUser(token, user_id) {
