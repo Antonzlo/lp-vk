@@ -218,7 +218,7 @@ class lp {
 			this.a.ts = updates.ts;
 			for ( let i = 0; i < updates.updates.length; i++ ) {
 				if ( !Object.keys( this.spisok ).includes( updates.updates[ i ][ 0 ].toString() ) ) {
-					console.log( updates.updates[ i ], updates.updates[ i ][ 6 ] );
+					if(this.spisok.debug) this.spisok.debug( updates.updates[ i ], updates.updates[ i ][ 6 ] );
 					continue;
 				}
 				let upd = updates.updates[ i ];
